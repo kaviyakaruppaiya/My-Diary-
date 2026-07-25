@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Personal Diary Login</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f3e8ff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+.box{
+background:#fff;
+padding:25px;
+border-radius:12px;
+box-shadow:0 0 10px gray;
+text-align:center;
+width:300px;
+}
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+font-size:16px;
+}
+button{
+padding:10px 20px;
+background:#7b2cbf;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>🔐 My Personal Diary</h2>
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<br><br>
+
+<button onclick="login()">Login</button>
+
+<p id="msg" style="color:red;"></p>
+</div>
+
+<script>
+function login(){
+var pass=document.getElementById("password").value;
+
+if(pass=="1234"){
+window.location.href="diary.html";
+}
+else{
+document.getElementById("msg").innerHTML="Wrong Password!";
+}
+}
+</script>
+
+</body>
+</html>
