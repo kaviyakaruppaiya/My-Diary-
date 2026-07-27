@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Previous Diaries</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f3e8ff;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px gray;
+}
+
+h1{
+text-align:center;
+color:#7b2cbf;
+}
+
+#history{
+white-space:pre-wrap;
+border:1px solid #ccc;
+padding:15px;
+border-radius:10px;
+min-height:250px;
+background:#fafafa;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#7b2cbf;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Previous Diaries</h1>
+
+<div id="history"></div>
+
+<button onclick="window.location.href='home.html'">
+🏠 Back to Home
+</button>
+
+</div>
+
+<script>
+
+let output="";
+
+for(let i=0;i<localStorage.length;i++){
+
+let key=localStorage.key(i);
+
+output += "📅 "+key+"\n";
+output += localStorage.getItem(key);
+output += "\n\n--------------------------\n\n";
+
+}
+
+if(output==""){
+output="No diary entries found.";
+}
+
+document.getElementById("history").innerText=output;
+
+</script>
+
+</body>
+</html>
