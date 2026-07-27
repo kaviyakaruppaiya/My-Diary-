@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Personal Diary</title>
+
+<link rel="stylesheet" href="style.css">
 
 <style>
 body{
@@ -12,7 +13,6 @@ body{
     font-family:Arial,sans-serif;
     background:#f3e8ff;
 }
-
 .container{
     max-width:700px;
     margin:40px auto;
@@ -21,37 +21,33 @@ body{
     border-radius:12px;
     box-shadow:0 0 15px rgba(0,0,0,0.2);
 }
-
 h1{
     text-align:center;
     color:#6a0dad;
 }
-
+#date,#time{
+    text-align:center;
+    font-weight:bold;
+}
 textarea{
     width:100%;
     height:300px;
     padding:10px;
     font-size:16px;
     border-radius:8px;
-    border:1px solid #ccc;
-    resize:none;
 }
-
 button{
     padding:12px 25px;
     background:#6a0dad;
     color:white;
     border:none;
     border-radius:8px;
+    margin-top:10px;
     cursor:pointer;
-    margin-top:15px;
-    font-size:16px;
 }
-
 #msg{
     color:green;
     font-weight:bold;
-    margin-top:10px;
 }
 </style>
 
@@ -63,58 +59,39 @@ button{
 
 <h1>📖 My Personal Diary</h1>
 
-<textarea id="diary" placeholder="Write your memories here..."></textarea>
+<p id="date"></p>
+<p id="time"></p>
 
-<br>
+<textarea id="diary" placeholder="Write today's memories here..."></textarea>
+
+<br><br>
 
 <button onclick="saveDiary()">💾 Save</button>
-br><br>
 
-<button onclick="window.location.href='home.html'">
-🏠 Home
-</button>
+<button onclick="window.location.href='home.html'">🏠 Home</button>
+
 <p id="msg"></p>
-<script>
-// Date
-let today = new Date();
-document.getElementById("date").innerHTML =
-"📅 Date : " + today.toLocaleDateString();
 
-// Time
-setInterval(function(){
-document.getElementById("time").innerHTML =
-"🕒 Time : " + new Date().toLocaleTimeString();
-},1000);
-
-// Load today's diary
-document.getElementById("diary").value =
-localStorage.getItem(today.toLocaleDateString()) || "";
-
-// Save diary
-function saveDiary(){
-let text = document.getElementById("diary").value;
-localStorage.setItem(today.toLocaleDateString(), text);
-document.getElementById("msg").innerHTML =
-"✅ Today's diary saved successfully!";
-}
-</script>
 </div>
 
 <script>
 
-window.onload=function(){
+let today=new Date().toLocaleDateString();
+
+document.getElementById("date").innerHTML="📅 Date : "+today;
+
+setInterval(function(){
+document.getElementById("time").innerHTML=
+"🕒 Time : "+new Date().toLocaleTimeString();
+},1000);
+
 document.getElementById("diary").value=
-localStorage.getItem("myDiary") || "";
-}
+localStorage.getItem(today)||"";
 
 function saveDiary(){
-
 let text=document.getElementById("diary").value;
-
-localStorage.setItem("myDiary",text);
-
-document.getElementById("msg").innerHTML="✅ Saved Successfully!";
-
+localStorage.setItem(today,text);
+document.getElementById("msg").innerHTML="✅ Diary Saved Successfully!";
 }
 
 </script>
