@@ -1,75 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Personal Diary Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Diary - Login</title>
+
 <style>
 body{
-font-family:Arial,sans-serif;
-background:#f3e8ff;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f3e8ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
-.box{
-background:#fff;
-padding:25px;
-border-radius:12px;
-box-shadow:0 0 10px gray;
-text-align:center;
-width:300px;
+.container{
+    background:#fff;
+    padding:30px;
+    width:320px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    text-align:center;
+}
+h2{
+    color:#6a0dad;
 }
 input{
-width:90%;
-padding:10px;
-margin:10px 0;
-font-size:16px;
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
 }
 button{
-padding:10px 20px;
-background:#7b2cbf;
-color:white;
-border:none;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
+    width:95%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+#loginBtn{
+    background:#6a0dad;
+    color:white;
+}
+#nextBtn{
+    background:green;
+    color:white;
+    display:none;
+}
+#msg{
+    color:red;
+    font-size:14px;
 }
 </style>
+
 </head>
 <body>
 
-<div class="box">
+<div class="container">
+
 <h2>🔐 My Personal Diary</h2>
 
-<input type="password" id="password" placeholder="Enter Password">
+<input type="text" id="username" placeholder="Username">
 
-<br><br>
+<input type="password" id="password" placeholder="Password">
 
-<button onclick="nextPage()">💾 Save</button>
-<script>
-function nextPage() {
-    window.location.href = "diary.html";
-}
-</script>
-<p id="msg" style="color:red;"></p>
+<button id="loginBtn" onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+<button id="nextBtn" onclick="nextPage()">Next ➜</button>
+
 </div>
 
 <script>
-function login(){
-var pass=document.getElementById("password").value;
 
-if(pass=="1234"){
+function login(){
+
+let user=document.getElementById("username").value;
+
+let pass=document.getElementById("password").value;
+
+if(user=="kavi" && pass=="1234"){
+
+document.getElementById("msg").style.color="green";
+document.getElementById("msg").innerHTML="✅ Login Successful";
+
+document.getElementById("nextBtn").style.display="block";
+
+}else{
+
+document.getElementById("msg").style.color="red";
+document.getElementById("msg").innerHTML="❌ Wrong Username or Password";
+
+}
+
+}
+
+function nextPage(){
+
 window.location.href="diary.html";
+
 }
-else{
-document.getElementById("msg").innerHTML="Wrong Password!";
-}
-}
+
 </script>
-<button onclick="window.location.href='diary.html'"
-style="background:#28a745; color:white; padding:10px 20px; border:none; border-radius:5px; margin-left:10px; cursor:pointer;">
-➡️ Next
-</button>
+
 </body>
 </html>
